@@ -1,0 +1,33 @@
+<%= form_with(model: @report) do |f| %>
+  <%= render 'shared/errors', object: @report %>
+
+  <%= f.hidden_field :reportable_type, value: @report.reportable_type %>
+  <P>
+    <%= f.label :reportable_type, "Report Type", class: "form-label" %>
+    <%= f.select :reportable_type, ["PitcherReport", "PositionReport"], {}, { class: "form-control", disabled: true } %>
+  </p>
+
+  <p>
+    <%= f.label :player_id, "Player", class: "form-label" %>
+    <%= f.collection_select :player_id, Player.order(:name), :id, :name, {}, { class: "form-control" } %>
+  </p>
+
+  <p>
+    <%= f.label :scout_id, "Scout", class: "form-label" %>
+    <%= f.collection_select :scout_id, Scout.order(:name), :id, :name, {}, { class: "form-control" } %>
+  </p>
+
+  <p>
+    <%= f.label :summary, class: "form-label" %>
+    <%= f.text_area :summary, class: "form-control" %>
+  </p>
+
+  <%= f.fields_for :reportable do |form| %>
+    <%= render_reportable_form(@report, form) %>
+  <% end %>
+
+  <p>
+    <%= f.submit class: "btn btn-primary" %>
+    <%= link_to "Cancel", root_path, class: 'btn btn-secondary' %>
+  </p>
+<% end %>

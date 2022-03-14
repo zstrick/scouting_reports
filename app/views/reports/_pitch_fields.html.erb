@@ -1,0 +1,22 @@
+<%= content_tag :div, class: "nested-fields", data: { new_record: form.object.new_record? } do %>
+  <div class="row my-4">
+    <div class="col">
+      <%= form.select :pitch_type, Pitch::PITCH_TYPES, {}, { class: "form-control", id: "pitch-type" } %>
+      <div class="form-text">Pitch Type</div>
+    </div>
+
+    <div class="col">
+      <%= form.text_field :velocity_high, class: "form-control", id: "velocity-high" %>
+      <div class="form-text">Velocity Low</div>
+    </div>
+
+    <div class="col">
+      <%= form.text_field :velocity_low, class: "form-control", id: "velocity-low" %>
+      <div class="form-text">Velocity High</div>
+    </div>
+
+    <small><%= link_to "Remove", "#", data: { action: "click->nested-form#remove_association" } %></small>
+  </div>
+
+  <%= form.hidden_field :_destroy %>
+<% end %>

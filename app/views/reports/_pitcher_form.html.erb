@@ -1,0 +1,21 @@
+<p>
+  <%= form.label :role, class: "form-label" %>
+  <%= form.select :role, PitcherReport::ROLES, {}, { class: "form-control" } %>
+</p>
+
+<h4>Pitches</h4>
+<div data-controller="nested-form">
+  <template data-nested-form-target="template">
+    <%= form.fields_for :pitches, Pitch.new, child_index: "NEW_RECORD" do |pitch| %>
+      <%= render "pitch_fields", form: pitch %>
+    <% end %>
+  </template>
+
+  <%= form.fields_for :pitches do |pitch| %>
+    <%= render "pitch_fields", form: pitch %>
+  <% end %>
+
+  <div class="mb-3" data-nested-form-target="links">
+    <%= link_to "Add Pitch", "#", class: "btn btn-primary", data: { action: "click->nested-form#add_association" } %>
+  </div>
+</div>

@@ -1,0 +1,14 @@
+<p>
+  <%= form.label :position, class: "form-label" %>
+  <%= form.select :position, PositionReport::POSITIONS, {}, { class: "form-control" } %>
+</p>
+
+<p>
+  <%= form.label :batting_grade, class: "form-label" %>
+  <%= form.select :batting_grade, PositionReport::BATTING_GRADE_SCALE, {}, { class: "form-control" } %>
+</p>
+
+<p>
+  <%= form.label :running_time, class: "form-label" %>
+  <%= form.number_field :running_time, in: 0.0..20.0, step: 0.1, class: "form-control" %>
+</p>

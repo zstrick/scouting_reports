@@ -6,4 +6,12 @@ module ReportsHelper
       render "pitcher_report", pitcher_report: report
     end
   end
+
+  def render_reportable_form(report, form)
+    if report.reportable_type == "PositionReport"
+      render "position_form", form: form
+    else
+      render "pitcher_form", form: form
+    end
+  end
 end

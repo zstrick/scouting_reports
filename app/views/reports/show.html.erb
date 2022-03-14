@@ -1,9 +1,12 @@
-<div>
+<div class = "mt-5">
   <h1><%= @report.player&.name %></h1>
 </div>
 <hr>
 
-<p><%= link_to "Back to reports", root_path, class: "btn btn-primary btn-sm float-end" %></p>
+<p>
+  <%= link_to "Back to reports", root_path, class: "btn btn-secondary btn-sm float-end" %>
+  <%= link_to "Edit", edit_report_path(@report), class: "btn btn-primary btn-sm float-end mx-3" %>
+</p>
 
 <h4>Report Type:</h4>
 <p><%= @report.reportable_type %></p>
