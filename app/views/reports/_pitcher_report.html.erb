@@ -1,0 +1,6 @@
+<h4>Role:</h4>
+<p><%= pitcher_report.role %></p>
+
+<% if pitcher_report.pitches.present? %>
+  <%= render "pitches", pitcher_report: pitcher_report %>
+<% end %>

@@ -1,0 +1,23 @@
+<div>
+  <h1><%= @report.player&.name %></h1>
+</div>
+<hr>
+
+<p><%= link_to "Back to reports", root_path, class: "btn btn-primary btn-sm float-end" %></p>
+
+<h4>Report Type:</h4>
+<p><%= @report.reportable_type %></p>
+
+<h4>Scout:</h4>
+<p><%= @report.scout&.name %></p>
+
+<h4>Summary:</h4>
+<p><%= @report.summary %></p>
+
+<h4>Created on:</h4>
+<p><%= @report.created_at.to_date %></p>
+
+<h4>Last modified on:</h4>
+<p><%= @report.updated_at.to_date %></p>
+
+<%= render_reportable(@report.reportable) %>

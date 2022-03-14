@@ -1,0 +1,17 @@
+<h4>Pitches</h4>
+<div>
+  <table class="table table-striped table-responsive">
+    <thead class="table-dark">
+      <tr>
+        <th>Type</th>
+        <th>Velocity High</th>
+        <th>Velocity Low</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <%= render partial: "pitch", collection: pitcher_report&.pitches %>
+    </tbody>
+  </table>
+</div>
+

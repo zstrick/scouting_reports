@@ -1,0 +1,44 @@
+<div>
+  <div>
+    <h1>Reports</h1>
+
+    <% if @reports.any? %>
+      <%# <%= link_to 'New Report', new_report_path, class: "btn btn-primary" %>
+    <% end %>
+  </div>
+
+  <% if @reports.any? %>
+    <div>
+      <table class="table table-striped table-responsive">
+        <thead class="table-dark">
+          <tr>
+            <th>Type</th>
+            <th>Player</th>
+            <th>Scout</th>
+            <th>Summary</th>
+            <th>Created On</th>
+            <th colspan="2">Last Modified</th>
+          </tr>
+        </thead>
+
+        <tbody>
+        <% @reports.each do |report| %>
+          <tr>
+            <td><%= report.reportable_type %></td>
+            <td><%= report.player&.name %></td>
+            <td><%= report.scout&.name %></td>
+            <td><%= truncate(report.summary, length: 20) %></td>
+            <td><%= report.created_at.to_date %></td>
+            <td><%= report.updated_at.to_date %></td>
+            <td>
+              <%= link_to 'Show', report_path(report) %>
+              <%= link_to 'Edit', "#" %>
+            </td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+  <% end %>
+
+</div>
